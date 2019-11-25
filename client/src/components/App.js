@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
-// import axios from 'axios';
-
-import MessageDisplay from './MessageDisplay';
-import MessageForm from './MessageForm';
+import RegisterForm from './auth/RegisterForm';
 
 const App = () => {
   useEffect(() => {
@@ -13,12 +10,11 @@ const App = () => {
       socket.emit('joined', 'room1');
     });
     console.log(socket);
-  });
+  }, []);
 
   return (
     <div>
-      <MessageDisplay />
-      <MessageForm />
+      <RegisterForm />
     </div>
   );
 };

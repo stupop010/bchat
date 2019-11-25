@@ -1,4 +1,4 @@
-import { TEST } from '../actionTypes';
+import { SIGNIN } from '../actionTypes';
 
 const initialState = {
   user: false,
@@ -6,7 +6,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case TEST:
+    case SIGNIN:
       console.log('recuders');
       return {};
     default:

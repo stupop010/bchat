@@ -1,2 +1,2 @@
-export const TEST = 'TEST';
+export const SIGNIN = 'SIGNIN';
 export const CHEESE = 'CHEESE';
