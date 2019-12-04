@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Form, TextInput, SignForm } from './authStyle';
-import { signIn } from '../../redux/actions/authActions';
+import { registerUser } from '../../redux/actions/authActions';
 
 const RegisterForm = () => {
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
   const submit = e => {
     e.preventDefault();
-    const data = { username, email, password };
-    dispatch(signIn(data));
+    const data = { name, email, password };
+    dispatch(registerUser(data));
   };
 
-  const onUsernameChange = ({ target }) => {
-    setUsername(target.value);
+  const onNameChange = ({ target }) => {
+    setName(target.value);
   };
 
   const onEmailChange = ({ target }) => {
@@ -32,9 +32,9 @@ const RegisterForm = () => {
     <SignForm>
       <Form noValidate autoComplete="off" onSubmit={submit}>
         <TextInput
-          value={username}
-          label="Username"
-          onChange={onUsernameChange}
+          value={name}
+          label="Full Name"
+          onChange={onNameChange}
           type="text"
         />
         <TextInput

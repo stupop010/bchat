@@ -21,6 +21,11 @@ module.exports = {
         exclude: /node_modules/,
         use: ['eslint-loader'],
       },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [
@@ -32,9 +37,11 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: './dist',
     proxy: {
-      '/api': 'http://localhost:5000',
+      '/api/*': 'http://localhost:5000',
+      '/user/*': 'http://localhost:5000',
     },
   },
 };
