@@ -1,20 +1,28 @@
 /* eslint-disable */
 import axios from 'axios';
-import { FETCH_USER } from '../actionTypes';
-import setAuthHeader from '../../utils/setAuthHeader';
+import { FETCH_USER, REFRESH_TOKEN } from '../actionTypes';
+import { setAccessTokenHeader } from '../../utils';
 
 export const fetchUser = () => async dispatch => {
-  // if (localStorage.access_token) {
-  //   setAuthHeader(localStorage.access_token);
-  // }
+  const accessToken = JSON.parse(localStorage.getItem('access_token'));
+  const refreshToken = JSON.parse(localStorage.getItem('refresh_token'));
+
+  if (accessToken === null || refreshToken === null) {
+    return undefined;
+  }
 
   try {
-    // const refeshToken = await axios.post('/api/token/refresh');
-    // const res = await axios.get('/user/profile');
-    // console.log(refeshToken);
-    // dispatch({ type: FETCH_USER, payload: res.data });
+    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+    const res = await axios.get('/api/user/profile');
+
+    dispatch({ type: FETCH_USER, payload: res.data });
   } catch (err) {
-    console.log(err);
+    // Will refresh token when the access token expired and user
+    axios.defaults.headers.common.Authorization = `Bearer ${refreshToken}`;
+    const res = await axios.post('/api/token/refresh');
+
+    setAccessTokenHeader(res.data.access_token);
+    dispatch({ type: REFRESH_TOKEN, payload: res.data });
   }
 };
 

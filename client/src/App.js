@@ -30,7 +30,7 @@ const App = () => {
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route exact path="/dashboard">
+          <Route path="/dashboard">
             <Dashboard />
           </Route>
           <Route exact path="/login">

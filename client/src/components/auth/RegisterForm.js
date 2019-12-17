@@ -8,6 +8,7 @@ const RegisterForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const dispatch = useDispatch();
 
   const submit = e => {
@@ -30,7 +31,7 @@ const RegisterForm = () => {
 
   return (
     <SignForm>
-      <Form noValidate autoComplete="off" onSubmit={submit}>
+      <Form autoComplete="off" onSubmit={submit}>
         <TextInput
           value={name}
           label="Full Name"

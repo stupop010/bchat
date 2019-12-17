@@ -15,28 +15,20 @@ const LoginForm = () => {
     dispatch(signIn(data));
   };
 
-  const onEmailChange = ({ target }) => {
-    setEmail(target.value);
-  };
-
-  const onPasswordChange = ({ target }) => {
-    setPassword(target.value);
-  };
-
   return (
     <SignForm>
-      <Form noValidate autoComplete="off" onSubmit={submit}>
+      <Form autoComplete="off" onSubmit={submit}>
         <TextInput
-          tpye="email"
+          type="email"
           value={email}
           label="Email"
-          onChange={onEmailChange}
+          onChange={e => setEmail(e.target.value)}
         />
         <TextInput
           value={password}
           label="Password"
           type="password"
-          onChange={onPasswordChange}
+          onChange={e => setPassword(e.target.value)}
         />
         <button type="submit">submit</button>
       </Form>

@@ -1,4 +1,4 @@
-import { FETCH_USER } from '../actionTypes';
+import { FETCH_USER, REFRESH_TOKEN } from '../actionTypes';
 
 const initialState = {
   displayName: '',
@@ -13,6 +13,11 @@ export default function(state = initialState, { type, payload }) {
       return {
         ...state,
         ...payload,
+      };
+    case REFRESH_TOKEN:
+      return {
+        ...state,
+        ...payload.user,
       };
     default:
       return state;

@@ -1,17 +1,17 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Header from './Header';
 import Menu from './menu/Menu';
+import ChatDisplay from './chatDisplay/ChatDisplay';
 
-const Dashboard = () => {
-  const [message, setMessage] = useState('');
+// eslint-disable-next-line react/prop-types
+const Dashboard = props => {
+  const { path } = useRouteMatch();
 
-  const sendMessgae = e => {
-    e.preventDefault();
-    console.log(message);
-  };
-
+  console.log(props);
   const user = useSelector(state => state.user);
 
   return (
@@ -19,13 +19,14 @@ const Dashboard = () => {
       <Menu user={user} />
       <div>
         <Header />
-        <div>Messages:</div>
-        <div>
-          <form onSubmit={e => sendMessgae(e)}>
-            <input type="text" onChange={e => setMessage(e.target.value)} />
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
+        <Switch>
+          <Route exact path={path}>
+            <div>ck</div>
+          </Route>
+          <Route path={`${path}/:name/:id`}>
+            <ChatDisplay />
+          </Route>
+        </Switch>
       </div>
     </MainDashboard>
   );

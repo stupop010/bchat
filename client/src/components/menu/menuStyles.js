@@ -1,5 +1,8 @@
 import Box from '@material-ui/core/Box';
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
 import styled from 'styled-components';
+// import ListItemText from '@material-ui/core/ListItemText';
 
 export const MenuAside = styled(Box)`
   width: 220px;
@@ -8,8 +11,54 @@ export const MenuAside = styled(Box)`
 `;
 
 export const UserTitle = styled.h2`
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 900;
   color: white;
-  padding: 10px 20px;
+  padding: 16px 20px;
+  padding-left: 16px;
+  text-transform: capitalize;
+`;
+
+export const ProjectTitle = styled.h4`
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 16px;
+  padding-bottom: 0.2em;
+  display: flex;
+  justify-content: space-between;
+  color: rgb(227, 227, 227);
+`;
+
+export const HoverSpan = styled.span`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const CreateChannel = styled(Box)`
+  display: flex;
+  margin: 8px 20px 0 20px !important;
+  color: rgb(173, 173, 173);
+  h3 {
+    flex: 1 1 auto;
+    margin: 0;
+    font-size: 17px !important;
+    font-weight: 400 !important;
+  }
+`;
+
+export const ProjectName = styled(ListItem)`
+  color: rgb(217, 217, 217) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+`;
+
+export const ProjectList = styled(List)`
+  padding-top: 0 !important;
+`;
+
+export const ChannelListItem = styled(ListItem)`
+  padding: 0 25px !important;
+  color: rgb(163, 163, 163) !important;
 `;
