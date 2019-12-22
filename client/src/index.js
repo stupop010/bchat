@@ -24,8 +24,8 @@ const store = createStore(
 store.subscribe(() => {
   // throttle(() => {
   saveState({
-    accessToken: store.getState().auth.access_token,
-    refreshToken: store.getState().auth.refresh_token,
+    token: store.getState().auth.token,
+    refreshToken: store.getState().auth.refreshToken,
   });
   // }, 1000);
 });

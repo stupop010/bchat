@@ -1,15 +1,17 @@
 import React from 'react';
+import { Display } from './chatDisplayStyle';
 
 const ChatDisplay = props => {
   console.log(props);
+
   return (
-    <div>
+    <Display>
       <div>Messages:</div>
       <form>
         <input type="text" onChange={e => console.log(e)} />
         <button type="submit">Send Message</button>
       </form>
-    </div>
+    </Display>
   );
 };
 

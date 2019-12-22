@@ -15,7 +15,6 @@ export const createProject = data => async dispatch => {
 export const createChannel = data => async dispatch => {
   try {
     const res = await axios.post('/api/channel', data);
-    console.log(res);
     dispatch({ type: CREATE_CHANNEL, payload: res.data });
   } catch (err) {
     console.log(err);
@@ -23,10 +22,13 @@ export const createChannel = data => async dispatch => {
 };
 
 export const fetchProjects = () => async dispatch => {
-  const token = JSON.parse(localStorage.getItem('access_token'));
-  setAccessTokenHeader(token);
-  const res = await axios.get('/api/project');
-  console.log(res);
-  dispatch({ type: FETCH_PROJECTS, payload: res.data.projects });
+  try {
+    const token = JSON.parse(localStorage.getItem('token'));
+    setAccessTokenHeader(token);
+    const res = await axios.get('/api/project');
+    dispatch({ type: FETCH_PROJECTS, payload: res.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
 /* eslint-enable */

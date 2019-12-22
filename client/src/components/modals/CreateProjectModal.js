@@ -11,19 +11,19 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import { createProject } from '../../redux/actions/projects';
 
 const CreateProjectModal = ({ open, onClose }) => {
-  const [projectName, setProjectName] = useState('');
+  const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const dispatch = useDispatch();
 
   const clearData = () => {
     setDescription('');
-    setProjectName('');
+    setName('');
   };
 
   const submit = e => {
     e.preventDefault();
     onClose();
-    const data = { projectName, description };
+    const data = { name, description };
     dispatch(createProject(data));
     clearData();
   };
@@ -43,9 +43,9 @@ const CreateProjectModal = ({ open, onClose }) => {
             id="name"
             label="Project Name"
             type="text"
-            value={projectName}
+            value={name}
             fullWidth
-            onChange={e => setProjectName(e.target.value)}
+            onChange={e => setName(e.target.value)}
           />
           <TextField
             margin="dense"

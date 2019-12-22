@@ -14,6 +14,8 @@ const Menu = ({ user }) => {
   const dispatch = useDispatch();
   const projects = useSelector(state => state.projects.projects);
 
+  console.log(projects);
+
   useEffect(() => {
     dispatch(fetchProjects());
   }, []);

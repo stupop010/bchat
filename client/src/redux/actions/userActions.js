@@ -4,8 +4,8 @@ import { FETCH_USER, REFRESH_TOKEN } from '../actionTypes';
 import { setAccessTokenHeader } from '../../utils';
 
 export const fetchUser = () => async dispatch => {
-  const accessToken = JSON.parse(localStorage.getItem('access_token'));
-  const refreshToken = JSON.parse(localStorage.getItem('refresh_token'));
+  const accessToken = JSON.parse(localStorage.getItem('token'));
+  const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
 
   if (accessToken === null || refreshToken === null) {
     return undefined;
@@ -13,7 +13,7 @@ export const fetchUser = () => async dispatch => {
 
   try {
     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-    const res = await axios.get('/api/user/profile');
+    const res = await axios.get('/api/auth');
 
     dispatch({ type: FETCH_USER, payload: res.data });
   } catch (err) {

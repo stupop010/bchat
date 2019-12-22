@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Header from './Header';
 import Menu from './menu/Menu';
+
 import ChatDisplay from './chatDisplay/ChatDisplay';
 
 // eslint-disable-next-line react/prop-types
 const Dashboard = props => {
   const { path } = useRouteMatch();
-
   console.log(props);
   const user = useSelector(state => state.user);
 
@@ -33,7 +33,9 @@ const Dashboard = props => {
 };
 
 const MainDashboard = styled.main`
-  display: flex;
+  display: grid;
+  grid-template-columns: 220px auto;
+  width: 100%;
 `;
 
 export default Dashboard;

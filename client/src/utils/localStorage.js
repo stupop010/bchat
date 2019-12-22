@@ -15,12 +15,12 @@ export const loadState = () => {
   }
 };
 
-export const saveState = ({ accessToken, refreshToken }) => {
+export const saveState = ({ token, refreshToken }) => {
   try {
-    const serializedAccessToken = JSON.stringify(accessToken);
+    const serializedAccessToken = JSON.stringify(token);
     const serializedRefreshToken = JSON.stringify(refreshToken);
-    localStorage.setItem('access_token', serializedAccessToken);
-    localStorage.setItem('refresh_token', serializedRefreshToken);
+    localStorage.setItem('token', serializedAccessToken);
+    localStorage.setItem('refreshToken', serializedRefreshToken);
   } catch (err) {
     // ignore write errors
     console.log(err);
