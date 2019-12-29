@@ -27,4 +27,5 @@ ChannelList.propTypes = {
     id: PropTypes.number,
   }).isRequired,
 };
+
 export default ChannelList;

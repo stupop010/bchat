@@ -9,9 +9,8 @@ import Menu from './menu/Menu';
 import ChatDisplay from './chatDisplay/ChatDisplay';
 
 // eslint-disable-next-line react/prop-types
-const Dashboard = props => {
+const Dashboard = () => {
   const { path } = useRouteMatch();
-  console.log(props);
   const user = useSelector(state => state.user);
 
   return (

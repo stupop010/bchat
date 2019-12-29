@@ -2,7 +2,6 @@ import Box from '@material-ui/core/Box';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import styled from 'styled-components';
-// import ListItemText from '@material-ui/core/ListItemText';
 
 export const MenuAside = styled(Box)`
   width: 220px;
@@ -61,4 +60,21 @@ export const ProjectList = styled(List)`
 export const ChannelListItem = styled(ListItem)`
   padding: 0 25px !important;
   color: rgb(163, 163, 163) !important;
+  width: 100%;
+  span {
+    display: inline-box !important;
+    width: 100% !important;
+    a {
+      display: block;
+      width: 100%;
+    }
+  }
 `;
+
+// export const ListLinkText = styled.div`
+//   display: inline-box !important;
+//   width: 100% !important;
+//   a {
+//     width: 100%;
+//   }
+// `;

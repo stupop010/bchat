@@ -15,14 +15,14 @@ import { createChannel } from '../../redux/actions/projects';
 import { PrivateBox, ContentBox, Text } from './modalStyles';
 
 const CreateProjectModal = ({ open, onClose, project }) => {
-  const [channelName, setChannelName] = useState('');
+  const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [privateChannel, setPrivateChannel] = useState(false);
   const dispatch = useDispatch();
 
   const clearData = () => {
     setDescription('');
-    setChannelName('');
+    setName('');
     setPrivateChannel(false);
   };
 
@@ -34,9 +34,9 @@ const CreateProjectModal = ({ open, onClose, project }) => {
     e.preventDefault();
     onClose();
     const data = {
-      channelName,
+      name,
       description,
-      privateChannel,
+      private: privateChannel,
       projectId: project.id,
     };
     dispatch(createChannel(data));
@@ -60,10 +60,10 @@ const CreateProjectModal = ({ open, onClose, project }) => {
             id="name"
             label="Channel Name"
             type="text"
-            value={channelName}
+            value={name}
             fullWidth
             placeholder=" # i.g. marketing"
-            onChange={e => setChannelName(e.target.value)}
+            onChange={e => setName(e.target.value)}
           />
           <TextField
             margin="dense"

@@ -42,6 +42,7 @@ module.exports = {
     proxy: {
       '/api/*': 'http://localhost:5000',
       '/user/*': 'http://localhost:5000',
+      '/': 'http://localhost:5000',
     },
   },
 };

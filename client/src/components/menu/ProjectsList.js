@@ -41,10 +41,6 @@ const ProjectsList = ({ projects }) => {
   );
 };
 
-// ProjectsList.defaultProps = {
-//   projects: [],
-// };
-
 ProjectsList.propTypes = {
   projects: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

@@ -11,6 +11,9 @@ const LandingPage = () => {
         <Link to="/register" style={{ padding: '1em' }}>
           register
         </Link>
+        <Link to="/dashboard" style={{ padding: '1em' }}>
+          dashboard
+        </Link>
       </ul>
       Landing page
     </div>
