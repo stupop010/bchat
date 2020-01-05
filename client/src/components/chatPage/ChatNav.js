@@ -1,12 +1,16 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import Typography from '@material-ui/core/Typography';
 
-import { addStarred } from '../../redux/actions/projects';
+import { addStarred } from '../../store/actions/projects';
+import { Nav, NavPaper } from './chatDisplayStyle';
 
 const ChatNav = ({ channel }) => {
+  const { projectName } = useParams();
   const dispatch = useDispatch();
 
   const click = () => {
@@ -14,16 +18,18 @@ const ChatNav = ({ channel }) => {
   };
 
   return (
-    <nav>
-      <Box component="div">
-        <h3>#{channel.name}</h3>
+    <Nav>
+      <NavPaper>
+        <Typography>
+          #{projectName} #{channel.name}
+        </Typography>
         <div>
           <Box component="span" onClick={click}>
             <StarBorderIcon fontSize="small" /> |
           </Box>
         </div>
-      </Box>
-    </nav>
+      </NavPaper>
+    </Nav>
   );
 };
 

@@ -3,11 +3,13 @@ import {
   FETCH_PROJECTS,
   CREATE_CHANNEL,
   FETCH_CHANNEL,
+  CREATE_MESSAGE,
 } from '../actionTypes';
 
 const initialState = {
   projects: [],
   channel: {},
+  messages: [],
 };
 
 export default function(state = initialState, { type, payload }) {
@@ -33,7 +35,13 @@ export default function(state = initialState, { type, payload }) {
     case FETCH_CHANNEL:
       return {
         ...state,
-        channel: payload[0],
+        channel: payload.channel[0],
+        messages: payload.messages,
+      };
+    case CREATE_MESSAGE:
+      return {
+        ...state,
+        messages: [...state.messages, payload.message],
       };
     default:
       return state;

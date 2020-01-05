@@ -6,7 +6,7 @@ import ReduxThunk from 'redux-thunk';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 // import throttle from 'lodash.throttle';
-import reducers from './redux/reducers';
+import reducers from './store/reducers';
 import { saveState } from './utils/localStorage';
 
 import App from './App';

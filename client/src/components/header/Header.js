@@ -3,7 +3,16 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header>
+    <header
+      style={{
+        height: '10vh',
+        background: 'white',
+        color: 'black',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
       <nav>
         <ul>
           <Link to="/" style={{ padding: '1em' }}>

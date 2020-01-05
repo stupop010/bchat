@@ -18,7 +18,13 @@ const ProjectItem = ({ project, toggleModal }) => {
   };
 
   const channelsList = project.channels.map(channel => {
-    return <ChannelList channel={channel} key={channel.id} />;
+    return (
+      <ChannelList
+        channel={channel}
+        key={channel.id}
+        projectName={project.name}
+      />
+    );
   });
 
   return (

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { SignForm, Form, TextInput } from './authStyle';
-import { signIn } from '../../redux/actions/authActions';
+import { signIn } from '../../store/actions/authActions';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');

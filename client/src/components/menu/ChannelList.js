@@ -4,13 +4,13 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import ListItemText from '@material-ui/core/ListItemText';
 import { ChannelListItem } from './menuStyles';
 
-const ChannelList = ({ channel }) => {
+const ChannelList = ({ channel, projectName }) => {
   const { url } = useRouteMatch();
 
   return (
     <ChannelListItem button>
       <ListItemText>
-        <Link to={`${url}/${channel.name}/${channel.id}`}>
+        <Link to={`${url}/${projectName}/${channel.name}/${channel.id}`}>
           # {channel.name}
         </Link>
       </ListItemText>
@@ -26,6 +26,7 @@ ChannelList.propTypes = {
     project_id: PropTypes.number,
     id: PropTypes.number,
   }).isRequired,
+  projectName: PropTypes.string.isRequired,
 };
 
 export default ChannelList;
