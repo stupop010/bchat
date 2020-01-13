@@ -1,22 +1,32 @@
 import React, { useState } from 'react';
-// import { useRouteMatch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProjectItem from './ProjectItem';
 import { ProjectList } from './menuStyles';
 import CreateChannelModal from '../modals/CreateChannelModal';
+import AddUserProjectModal from '../modals/AddUserProjectModal';
 
 const ProjectsList = ({ projects }) => {
-  const [modalState, setModalState] = useState(false);
+  const [modalChannelState, setModalChannelState] = useState(false);
+  const [modalAddUserState, setModalAddUserState] = useState(false);
   const [targetProject, setProject] = useState({});
 
-  const handleClose = () => {
+  const handleChannelClose = () => {
     setProject({});
-    setModalState(false);
+    setModalChannelState(false);
   };
 
-  const toggleModal = project => {
+  const toggleChannelModal = project => {
     setProject(project);
-    setModalState(true);
+    setModalChannelState(true);
+  };
+  const handleAddUserClose = () => {
+    setProject({});
+    setModalAddUserState(false);
+  };
+
+  const toggleAddUserModal = project => {
+    setProject(project);
+    setModalAddUserState(true);
   };
 
   const list = projects.map(project => {
@@ -24,7 +34,8 @@ const ProjectsList = ({ projects }) => {
       <ProjectItem
         key={project.id}
         project={project}
-        toggleModal={toggleModal}
+        toggleChannelModal={toggleChannelModal}
+        toggleAddUserModal={toggleAddUserModal}
       />
     );
   });
@@ -33,8 +44,13 @@ const ProjectsList = ({ projects }) => {
     <ProjectList>
       {list}
       <CreateChannelModal
-        open={modalState}
-        onClose={handleClose}
+        open={modalChannelState}
+        onClose={handleChannelClose}
+        project={targetProject}
+      />
+      <AddUserProjectModal
+        open={modalAddUserState}
+        onClose={handleAddUserClose}
         project={targetProject}
       />
     </ProjectList>

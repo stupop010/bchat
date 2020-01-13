@@ -4,18 +4,19 @@ import {
   CREATE_CHANNEL,
   FETCH_CHANNEL,
   CREATE_MESSAGE,
+  ONLINE_IN_CHANNEL,
 } from '../actionTypes';
 
 const initialState = {
   projects: [],
   channel: {},
   messages: [],
+  onlineInChannel: {},
 };
 
 export default function(state = initialState, { type, payload }) {
   switch (type) {
     case CREATE_PROJECT:
-      console.log(payload);
       return {
         ...state,
         projects: [...state.projects, payload],
@@ -42,6 +43,11 @@ export default function(state = initialState, { type, payload }) {
       return {
         ...state,
         messages: [...state.messages, payload.message],
+      };
+    case ONLINE_IN_CHANNEL:
+      return {
+        ...state,
+        onlineInChannel: payload,
       };
     default:
       return state;

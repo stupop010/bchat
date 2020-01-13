@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import { CREATE_MESSAGE } from '../store/actionTypes';
+import { CREATE_MESSAGE, ONLINE_IN_CHANNEL } from '../store/actionTypes';
 
 const ENDPOINT = 'http://localhost:5000';
 export const socket = io.connect(ENDPOINT, { reconnect: true });
@@ -22,7 +22,13 @@ export const sendSocketMessage = (message, channelId, userId, userName) => {
   socket.emit('message', { message, channelId, userId, userName });
 };
 
-export const disconnectSocket = id => {
-  socket.emit('disconnect', { id });
-  // socket.off();
+export const disconnectSocket = () => {
+  socket.emit('disconnect');
+  socket.off();
+};
+
+export const onlineInChannel = dispatch => {
+  socket.on('onlineInChannel', data => {
+    dispatch({ type: ONLINE_IN_CHANNEL, payload: data.online });
+  });
 };

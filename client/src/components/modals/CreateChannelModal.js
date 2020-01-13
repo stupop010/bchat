@@ -32,7 +32,6 @@ const CreateProjectModal = ({ open, onClose, project }) => {
 
   const submit = e => {
     e.preventDefault();
-    onClose();
     const data = {
       name,
       description,
@@ -41,11 +40,16 @@ const CreateProjectModal = ({ open, onClose, project }) => {
     };
     dispatch(createChannel(data));
     clearData();
+    onClose();
   };
 
   return (
-    <Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">
+    <Dialog
+      open={open}
+      onClose={onClose}
+      aria-labelledby="create-channel-modal"
+    >
+      <DialogTitle id="create-channel-modal">
         Create A {privateChannel ? 'Private' : null} Channel for {project.name}
       </DialogTitle>
       <DialogContent>

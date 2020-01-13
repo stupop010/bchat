@@ -29,6 +29,15 @@ export const fetchProjects = () => async dispatch => {
   }
 };
 
+export const addUserToProject = (email, projectId) => async dispatch => {
+  try {
+    const res = await axios.post('/api/project/addUser', { email, projectId });
+    console.log(res);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 // Channel Actions
 export const createChannel = data => async dispatch => {
   try {
@@ -42,7 +51,6 @@ export const createChannel = data => async dispatch => {
 export const fetchChannel = id => async dispatch => {
   try {
     const res = await axios.get('/api/channel', { params: { id } });
-    console.log(res);
     dispatch({ type: FETCH_CHANNEL, payload: res.data });
   } catch (err) {
     console.error(err);

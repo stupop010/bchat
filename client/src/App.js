@@ -9,11 +9,16 @@ import LandingPage from './pages/LandingPage';
 import './app.css';
 
 import { fetchUser } from './store/actions/userActions';
+import { disconnectSocket } from './utils/socket';
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUser());
+
+    return () => {
+      disconnectSocket();
+    };
   }, []);
 
   return (

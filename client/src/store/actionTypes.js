@@ -13,6 +13,7 @@ export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 // Channel
 export const CREATE_CHANNEL = 'CREATE_CHANNEL';
 export const FETCH_CHANNEL = 'FETCH_CHANNEL';
+export const ONLINE_IN_CHANNEL = 'ONLINE_IN_CHANNEL';
 
 // Messages
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';

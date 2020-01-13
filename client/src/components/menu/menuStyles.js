@@ -30,6 +30,7 @@ export const ProjectTitle = styled.h4`
 `;
 
 export const HoverSpan = styled.span`
+  margin: 0 0.5rem;
   &:hover {
     cursor: pointer;
   }

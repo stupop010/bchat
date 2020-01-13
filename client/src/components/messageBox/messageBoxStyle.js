@@ -18,7 +18,8 @@ export const MessageInput = styled(TextField)`
 
 export const MessageContainer = styled(Container)`
   background-color: white;
-  padding: 0.5em 0;
+  min-height: 5.5rem;
+  grid-area: messageBox;
 `;
 
 export const BoldSpan = styled.span`

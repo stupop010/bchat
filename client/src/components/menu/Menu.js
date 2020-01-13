@@ -9,7 +9,7 @@ import { fetchProjects } from '../../store/actions/projects';
 
 const Menu = ({ user }) => {
   if (!user) return null;
-  const [modalState, setModalState] = useState(false);
+  const [modalChannelState, setModalChannelState] = useState(false);
 
   const dispatch = useDispatch();
   const projects = useSelector(state => state.projects.projects);
@@ -18,20 +18,20 @@ const Menu = ({ user }) => {
     dispatch(fetchProjects());
   }, []);
 
-  const toggleModal = () => {
-    setModalState(true);
+  const toggleChannelModal = () => {
+    setModalChannelState(true);
   };
 
   const handleClose = () => {
-    setModalState(false);
+    setModalChannelState(false);
   };
 
   return (
     <MenuAside component="aside">
       <UserTitle>{user.displayName || user.name}</UserTitle>
-      <ProjectsTitle toggleModal={toggleModal} />
+      <ProjectsTitle toggleChannelModal={toggleChannelModal} />
       <ProjectsList projects={projects} />
-      <CreateProjectModal open={modalState} onClose={handleClose} />
+      <CreateProjectModal open={modalChannelState} onClose={handleClose} />
     </MenuAside>
   );
 };

@@ -8,11 +8,10 @@ export const MessageContent = styled(CardContent)`
 `;
 
 export const MessageCard = styled(Card)`
-  margin: 0.2rem 0;
+  margin: 0.2rem 0.8rem;
   width: 43%;
-  margin-left: 0.8rem;
   background: rgb(227, 227, 227) !important;
-  overflow: visible;
+  overflow: visible !important;
 `;
 
 export const MessageTitle = styled(Typography)`
