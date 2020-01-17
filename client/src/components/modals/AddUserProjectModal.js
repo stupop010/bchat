@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 
-import { addUserToProject } from '../../store/actions/projects';
+import { addUserToProject } from '../../store/actions/projectsAction';
 
 const AddUserProjectModal = ({ open, onClose, project }) => {
   const [email, setEmail] = useState('');

@@ -6,6 +6,7 @@ import {
   FETCH_PROJECTS,
   CREATE_CHANNEL,
   FETCH_CHANNEL,
+  EDIT_CHANNEL,
 } from '../actionTypes';
 
 // Project Actions
@@ -52,6 +53,25 @@ export const fetchChannel = id => async dispatch => {
   try {
     const res = await axios.get('/api/channel', { params: { id } });
     dispatch({ type: FETCH_CHANNEL, payload: res.data });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const editChannel = data => async dispatch => {
+  try {
+    const res = await axios.patch('/api/channel', data);
+    dispatch({ type: EDIT_CHANNEL, payload: res.data });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const deleteChannel = data => async dispatch => {
+  console.log('click');
+  try {
+    const res = await axios.delete('/api/delete', { params: data });
+    console.log(res);
   } catch (err) {
     console.error(err);
   }

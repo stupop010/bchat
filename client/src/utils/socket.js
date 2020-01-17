@@ -18,7 +18,6 @@ export const newMessage = dispatch => {
 };
 
 export const sendSocketMessage = (message, channelId, userId, userName) => {
-  console.log(isOpen(socket));
   socket.emit('message', { message, channelId, userId, userName });
 };
 
@@ -29,6 +28,7 @@ export const disconnectSocket = () => {
 
 export const onlineInChannel = dispatch => {
   socket.on('onlineInChannel', data => {
+    console.log(data);
     dispatch({ type: ONLINE_IN_CHANNEL, payload: data.online });
   });
 };

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash.isempty';
 
-import { useChannelFetching } from '../../hooks/fetchingData';
+import useChannelFetching from '../../hooks/fetchingData';
 import ChatDisplay from './ChatDisplay';
 
 const ChatPage = ({ user }) => {

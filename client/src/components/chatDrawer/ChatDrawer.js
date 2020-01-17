@@ -7,9 +7,11 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Divider from '@material-ui/core/Divider';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 import useStyles from './chatDrawerStyle';
 import TitleButton from './TitleButton';
+import ChannelDetails from './ChannelDetails';
 
 const ChatDrawer = ({ panelOpen, setDrawerOpen }) => {
   const classes = useStyles();
@@ -35,14 +37,10 @@ const ChatDrawer = ({ panelOpen, setDrawerOpen }) => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
+          <SettingsIcon className={classes.mr3} />
           <Typography className={classes.heading}>Channel Details</Typography>
         </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat.
-            Aliquam eget maximus est, id dignissim quam.
-          </Typography>
-        </ExpansionPanelDetails>
+        <ChannelDetails />
       </ExpansionPanel>
       <ExpansionPanel
         expanded={expanded === 'pinnedItems'}

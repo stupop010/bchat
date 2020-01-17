@@ -29,9 +29,12 @@ const ChatDisplay = ({ channel, user }) => {
   const messagesEndRef = createRef(null);
 
   useEffect(() => {
+    newMessage(dispatch);
+  }, []);
+
+  useEffect(() => {
     // Socket Functions
     joinChannel(channel);
-    newMessage(dispatch);
     onlineInChannel(dispatch);
   }, [channel.id]);
 

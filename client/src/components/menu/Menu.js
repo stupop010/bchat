@@ -5,7 +5,7 @@ import { MenuAside, UserTitle } from './menuStyles';
 import ProjectsList from './ProjectsList';
 import ProjectsTitle from './ProjectsTitle';
 import CreateProjectModal from '../modals/CreateProjectModal';
-import { fetchProjects } from '../../store/actions/projects';
+import { fetchProjects } from '../../store/actions/projectsAction';
 
 const Menu = ({ user }) => {
   if (!user) return null;

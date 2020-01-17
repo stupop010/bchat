@@ -11,7 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import { createChannel } from '../../store/actions/projects';
+import { createChannel } from '../../store/actions/projectsAction';
 import { PrivateBox, ContentBox, Text } from './modalStyles';
 
 const CreateProjectModal = ({ open, onClose, project }) => {

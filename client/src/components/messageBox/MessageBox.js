@@ -41,7 +41,6 @@ const MessageBox = ({ sendMessage }) => {
             </>
           }
         />
-        {/* <button type="submit">Send Message</button> */}
       </Form>
     </MessageContainer>
   );

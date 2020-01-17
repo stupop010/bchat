@@ -9,7 +9,7 @@ import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
 import Tooltip from '@material-ui/core/Tooltip';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import { addStarred } from '../../store/actions/projects';
+import { addStarred } from '../../store/actions/projectsAction';
 import {
   Nav,
   NavPaper,
