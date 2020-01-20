@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -16,16 +17,16 @@ import useStyles from './chatDrawerStyle';
 const ChannelDetails = () => {
   const classes = useStyles();
   const channel = useSelector(state => state.projects.channel);
+  const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
 
+  const createdAt = moment(channel.createdAt)
+    .format('MMMM Do, YYYY')
+    .toString();
+
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const onDeleteChannel = id => {
-    console.log('click');
-    deleteChannel(id);
   };
 
   const EditButton = () => (
@@ -61,7 +62,7 @@ const ChannelDetails = () => {
           <Typography>
             <span>Created</span>
           </Typography>
-          <Typography>{channel.createdAt}</Typography>
+          <Typography>{createdAt}</Typography>
         </Box>
 
         <Button
@@ -70,7 +71,7 @@ const ChannelDetails = () => {
           variant="contained"
           className={classes.deleteButton}
           startIcon={<DeleteIcon />}
-          onClick={onDeleteChannel}
+          onClick={() => dispatch(deleteChannel(channel.id))}
         >
           Delete Channel
         </Button>

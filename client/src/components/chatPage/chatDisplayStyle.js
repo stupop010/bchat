@@ -6,12 +6,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 export const Display = styled(Box)`
-  background: rbg(245, 245, 245);
+  background: rgb(245, 245, 245);
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-rows: 4rem auto 6rem;
-  grid-template-columns: auto;
+  grid-template-columns: 2fr;
 `;
 
 export const ChatMessage = styled(Box)`

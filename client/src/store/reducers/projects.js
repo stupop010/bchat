@@ -5,6 +5,7 @@ import {
   FETCH_CHANNEL,
   CREATE_MESSAGE,
   ONLINE_IN_CHANNEL,
+  DELETE_CHANNEL,
 } from '../actionTypes';
 
 const initialState = {
@@ -22,9 +23,16 @@ export default function(state = initialState, { type, payload }) {
         projects: [...state.projects, payload],
       };
     case FETCH_PROJECTS:
+    case DELETE_CHANNEL:
       return {
         ...state,
         projects: payload,
+      };
+    case FETCH_CHANNEL:
+      return {
+        ...state,
+        channel: payload.channel[0],
+        messages: payload.messages,
       };
     case CREATE_CHANNEL:
       return {
@@ -32,12 +40,6 @@ export default function(state = initialState, { type, payload }) {
         projects: state.projects.map(project =>
           project.id === payload[0].id ? payload[0] : project,
         ),
-      };
-    case FETCH_CHANNEL:
-      return {
-        ...state,
-        channel: payload.channel[0],
-        messages: payload.messages,
       };
     case CREATE_MESSAGE:
       return {

@@ -1,35 +1,45 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  header: {
+    background: 'rgb(110, 15, 7)',
+  },
+  title: {
+    flex: '1',
+  },
+  linkPadding: {
+    padding: '1rem',
+  },
+  flex: {
+    display: 'flex',
+    padding: 0,
+    margin: 0,
+  },
+}));
 
 const Header = () => {
+  const classes = useStyles();
   return (
-    <header
-      style={{
-        height: '10vh',
-        background: 'white',
-        color: 'black',
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      <nav>
-        <ul>
-          <Link to="/" style={{ padding: '1em' }}>
-            home
+    <AppBar position="static" className={classes.header}>
+      <Toolbar>
+        <Typography variant="h3" className={classes.title}>
+          B-Chat
+        </Typography>
+        <ul className={classes.flex}>
+          <Link to="/login" className={classes.linkPadding}>
+            <Typography>Login</Typography>
           </Link>
-          <Link to="/login" style={{ padding: '1em' }}>
-            login
-          </Link>
-          <Link to="/register" style={{ padding: '1em' }}>
-            register
-          </Link>
-          <Link to="/create_project" style={{ padding: '1em' }}>
-            Create a Project
+          <Link to="/register" className={classes.linkPadding}>
+            <Typography>Register</Typography>
           </Link>
         </ul>
-      </nav>
-    </header>
+      </Toolbar>
+    </AppBar>
   );
 };
 

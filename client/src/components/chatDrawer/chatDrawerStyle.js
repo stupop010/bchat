@@ -4,6 +4,7 @@ const useStyles = makeStyles(() => ({
   root: {
     height: '100%',
     width: '100%',
+    background: 'white',
   },
   heading: {
     fontSize: '1.2rem',

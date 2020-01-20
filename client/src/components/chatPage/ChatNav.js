@@ -18,7 +18,7 @@ import {
   ChannelDescription,
 } from './chatDisplayStyle';
 
-const ChatNav = ({ channel, setPanelOpen, setDrawerOpen }) => {
+const ChatNav = ({ channel, setPanelOpen, setDrawerOpen, drawerOpen }) => {
   const { projectName } = useParams();
   const dispatch = useDispatch();
 
@@ -32,40 +32,46 @@ const ChatNav = ({ channel, setPanelOpen, setDrawerOpen }) => {
         <ProjectName variant="h3">{projectName}</ProjectName>
         <NavList>
           <Typography variant="h4">#{channel.name}</Typography>
+
           <Tooltip title="Add To Favourites" aria-label="add to favourites">
             <Box component="span" onClick={click}>
               <StarBorderIcon />
             </Box>
           </Tooltip>
+
           <Tooltip title="Important Messages" aria-label="important messages">
             <Box
               component="span"
               onClick={() => {
                 setPanelOpen('pinnedItems');
-                setDrawerOpen(true);
+                setDrawerOpen(!drawerOpen);
               }}
             >
               <PriorityHighIcon />
             </Box>
           </Tooltip>
+
           <Tooltip title="Channel Setting" aria-label="channel setting">
             <Box
               component="span"
               onClick={() => {
                 setPanelOpen('channelDetails');
-                setDrawerOpen(true);
+                setDrawerOpen(!drawerOpen);
               }}
             >
               <SettingsIcon />
             </Box>
           </Tooltip>
-          <Tooltip
-            title={channel.description}
-            interactive
-            aria-label={channel.description}
-          >
-            <ChannelDescription>{channel.description}</ChannelDescription>
-          </Tooltip>
+
+          {channel.description && (
+            <Tooltip
+              title={channel.description}
+              interactive
+              aria-label={channel.description}
+            >
+              <ChannelDescription>{channel.description}</ChannelDescription>
+            </Tooltip>
+          )}
         </NavList>
       </NavPaper>
     </Nav>
@@ -81,6 +87,7 @@ ChatNav.propTypes = {
   }).isRequired,
   setPanelOpen: PropTypes.func.isRequired,
   setDrawerOpen: PropTypes.func.isRequired,
+  drawerOpen: PropTypes.bool.isRequired,
 };
 
 export default ChatNav;

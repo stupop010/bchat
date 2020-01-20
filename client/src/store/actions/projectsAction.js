@@ -7,6 +7,7 @@ import {
   CREATE_CHANNEL,
   FETCH_CHANNEL,
   EDIT_CHANNEL,
+  DELETE_CHANNEL,
 } from '../actionTypes';
 
 // Project Actions
@@ -68,10 +69,9 @@ export const editChannel = data => async dispatch => {
 };
 
 export const deleteChannel = data => async dispatch => {
-  console.log('click');
   try {
-    const res = await axios.delete('/api/delete', { params: data });
-    console.log(res);
+    const res = await axios.delete('/api/channel', { params: { data } });
+    dispatch({ type: DELETE_CHANNEL, payload: res.data });
   } catch (err) {
     console.error(err);
   }

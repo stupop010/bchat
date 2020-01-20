@@ -64,6 +64,7 @@ const ChatDisplay = ({ channel, user }) => {
         channel={channel}
         setPanelOpen={setPanelOpen}
         setDrawerOpen={setDrawerOpen}
+        drawerOpen={drawerOpen}
       />
       <MessagesContainer>
         <MessageList>
