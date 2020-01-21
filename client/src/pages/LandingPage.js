@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -10,9 +11,11 @@ import useStyles from './landingPageStyle';
 
 const LandingPage = () => {
   const classes = useStyles();
+  const isAuth = useSelector(state => state.user.isAuth);
+
   return (
     <Box className={classes.root} component="main">
-      <Header />
+      <Header isAuth={isAuth} />
       <Box className={classes.heroContent} component="section">
         <Box className={classes.heroInfo}>
           <Typography variant="h1" className={classes.title}>

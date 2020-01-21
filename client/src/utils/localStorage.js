@@ -1,12 +1,13 @@
 export const loadState = () => {
   try {
-    const accessToken = localStorage.getItem('access_token');
-    const refreshToken = localStorage.getItem('refresh_token');
+    const accessToken = localStorage.getItem('token');
+    const refreshToken = localStorage.getItem('refreshToken');
     if (accessToken === null || refreshToken === null) {
       return undefined;
     }
+
     return {
-      accessToken: JSON.parse(accessToken),
+      token: JSON.parse(accessToken),
       refreshToken: JSON.parse(refreshToken),
     };
   } catch (err) {

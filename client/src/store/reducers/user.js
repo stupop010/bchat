@@ -5,6 +5,7 @@ const initialState = {
   email: '',
   name: '',
   isLoading: false,
+  isAuth: false,
 };
 
 export default function(state = initialState, { type, payload }) {
@@ -13,6 +14,7 @@ export default function(state = initialState, { type, payload }) {
       return {
         ...state,
         ...payload,
+        isAuth: true,
       };
     case REFRESH_TOKEN:
       return {
