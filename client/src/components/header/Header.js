@@ -3,24 +3,7 @@ import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles(() => ({
-  header: {
-    background: 'rgb(110, 15, 7)',
-  },
-  title: {
-    flex: '1',
-  },
-  linkPadding: {
-    padding: '1rem',
-  },
-  flex: {
-    display: 'flex',
-    padding: 0,
-    margin: 0,
-  },
-}));
+import useStyles from './headerStyle';
 
 const Header = () => {
   const classes = useStyles();

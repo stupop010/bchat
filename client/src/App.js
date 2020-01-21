@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
 import RegisterForm from './components/auth/RegisterForm';
 import LoginForm from './components/auth/LoginForm';
 import Dashboard from './pages/Dashboard';
@@ -23,29 +22,22 @@ const App = () => {
 
   return (
     <Router>
-      <Main>
-        <Switch>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route exact path="/login">
-            <LoginForm />
-          </Route>
-          <Route exact path="/register">
-            <RegisterForm />
-          </Route>
-        </Switch>
-      </Main>
+      <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route exact path="/login">
+          <LoginForm />
+        </Route>
+        <Route exact path="/register">
+          <RegisterForm />
+        </Route>
+      </Switch>
     </Router>
   );
 };
-
-const Main = styled.main`
-  height: 100vh;
-  display: flex;
-`;
 
 export default App;
