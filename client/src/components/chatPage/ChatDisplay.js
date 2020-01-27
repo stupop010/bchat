@@ -20,12 +20,12 @@ import {
 } from '../../utils/socket';
 import MessageBox from '../messageBox/MessageBox';
 
-const ChatDisplay = ({ channel, user }) => {
+const ChatDisplay = ({ channel, user, isAdmin }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [panelOpen, setPanelOpen] = useState('');
   const dispatch = useDispatch();
   const classes = useStyles();
-  const messages = useSelector(state => state.projects.messages);
+  const messages = useSelector(state => state.channel.messages);
   const messagesEndRef = createRef(null);
 
   useEffect(() => {
@@ -77,7 +77,11 @@ const ChatDisplay = ({ channel, user }) => {
       <div
         className={clsx(classes.displayNone, { [classes.drawer]: drawerOpen })}
       >
-        <ChatDrawer panelOpen={panelOpen} setDrawerOpen={setDrawerOpen} />
+        <ChatDrawer
+          panelOpen={panelOpen}
+          setDrawerOpen={setDrawerOpen}
+          isAdmin={isAdmin}
+        />
       </div>
       <MessageBox sendMessage={sendMessage} />
     </Display>

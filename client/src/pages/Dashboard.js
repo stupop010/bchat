@@ -1,10 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
-import io from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import Header from '../components/header/Header';
 import Menu from '../components/menu/Menu';
 
 import ChatPage from '../components/chatPage/ChatPage';
@@ -18,7 +16,6 @@ const Dashboard = () => {
     <MainDashboard>
       <Menu user={user} />
       <ChatDisplayContainer>
-        {/* <Header /> */}
         <Switch>
           <Route exact path={path}>
             <div>ck</div>

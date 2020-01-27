@@ -10,8 +10,7 @@ const useChannelFetching = id => {
     dispatch(fetchChannel(id));
   }, [id]);
 
-  const channel = useSelector(state => state.projects.channel);
-
+  const channel = useSelector(state => state.channel.channel);
   return channel;
 };
 

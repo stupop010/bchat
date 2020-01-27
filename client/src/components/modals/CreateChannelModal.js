@@ -14,7 +14,7 @@ import Switch from '@material-ui/core/Switch';
 import { createChannel } from '../../store/actions/projectsAction';
 import { PrivateBox, ContentBox, Text } from './modalStyles';
 
-const CreateProjectModal = ({ open, onClose, project }) => {
+const CreateProjectModal = ({ open, onClose, project, userId }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [privateChannel, setPrivateChannel] = useState(false);
@@ -37,6 +37,7 @@ const CreateProjectModal = ({ open, onClose, project }) => {
       description,
       private: privateChannel,
       projectId: project.id,
+      userId,
     };
     dispatch(createChannel(data));
     clearData();
@@ -122,6 +123,11 @@ CreateProjectModal.propTypes = {
     id: PropTypes.number,
     description: PropTypes.string,
   }).isRequired,
+  userId: PropTypes.number,
+};
+
+CreateProjectModal.defaultProps = {
+  userId: 0,
 };
 
 export default CreateProjectModal;

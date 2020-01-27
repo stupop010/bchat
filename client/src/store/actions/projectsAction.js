@@ -14,7 +14,7 @@ import {
 export const createProject = data => async dispatch => {
   try {
     const res = await axios.post('/api/project', data);
-    dispatch({ type: CREATE_PROJECT, payload: res.data[0] });
+    dispatch({ type: CREATE_PROJECT, payload: res.data });
   } catch (err) {
     console.error(err);
   }
@@ -22,8 +22,7 @@ export const createProject = data => async dispatch => {
 
 export const fetchProjects = () => async dispatch => {
   try {
-    const token = JSON.parse(localStorage.getItem('token'));
-    setAccessTokenHeader(token);
+    setAccessTokenHeader();
     const res = await axios.get('/api/project');
     dispatch({ type: FETCH_PROJECTS, payload: res.data });
   } catch (err) {

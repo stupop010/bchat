@@ -16,10 +16,10 @@ import useStyles from './chatDrawerStyle';
 
 const ChannelDetails = () => {
   const classes = useStyles();
-  const channel = useSelector(state => state.projects.channel);
-  const dispatch = useDispatch();
-
   const [open, setOpen] = useState(false);
+  const channel = useSelector(state => state.channel.channel);
+  const isAdmin = useSelector(state => state.channel.isAdmin);
+  const dispatch = useDispatch();
 
   const createdAt = moment(channel.createdAt)
     .format('MMMM Do, YYYY')
@@ -65,16 +65,18 @@ const ChannelDetails = () => {
           <Typography>{createdAt}</Typography>
         </Box>
 
-        <Button
-          type="button"
-          color="secondary"
-          variant="contained"
-          className={classes.deleteButton}
-          startIcon={<DeleteIcon />}
-          onClick={() => dispatch(deleteChannel(channel.id))}
-        >
-          Delete Channel
-        </Button>
+        {isAdmin && (
+          <Button
+            type="button"
+            color="secondary"
+            variant="contained"
+            className={classes.deleteButton}
+            startIcon={<DeleteIcon />}
+            onClick={() => dispatch(deleteChannel(channel.id))}
+          >
+            Delete Channel
+          </Button>
+        )}
       </ExpansionPanelDetails>
       <EditChannel open={open} onClose={handleClose} channel={channel} />
     </>

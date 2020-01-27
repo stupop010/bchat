@@ -36,18 +36,6 @@ export const HoverSpan = styled.span`
   }
 `;
 
-export const CreateChannel = styled(Box)`
-  display: flex;
-  margin: 8px 20px 0 20px !important;
-  color: rgb(173, 173, 173);
-  h3 {
-    flex: 1 1 auto;
-    margin: 0;
-    font-size: 17px !important;
-    font-weight: 400 !important;
-  }
-`;
-
 export const ProjectName = styled(ListItem)`
   color: rgb(217, 217, 217) !important;
   padding-top: 0 !important;
