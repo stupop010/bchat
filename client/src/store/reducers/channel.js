@@ -11,9 +11,9 @@ export default function(state = initialState, { type, payload }) {
     case FETCH_CHANNEL:
       return {
         ...state,
-        channel: payload.channel[0],
+        channel: payload.channel,
         messages: payload.messages,
-        isAdmin: payload.channel[0].users[0].channel_members.admin,
+        isAdmin: payload.channel.channel_members.admin,
       };
     case CREATE_MESSAGE:
       return {

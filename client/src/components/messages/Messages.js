@@ -18,6 +18,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Messages = ({ message, userId }) => {
+  console.log(message);
   const classes = useStyles();
   const [otherUser, setOtherUser] = useState(false);
 
