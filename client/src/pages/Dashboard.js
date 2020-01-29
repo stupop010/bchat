@@ -1,16 +1,28 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Menu from '../components/menu/Menu';
 
 import ChatPage from '../components/chatPage/ChatPage';
+import { joinProject, test } from '../utils/socket';
 
 // eslint-disable-next-line react/prop-types
 const Dashboard = () => {
   const { path } = useRouteMatch();
   const user = useSelector(state => state.user);
+  const projects = useSelector(state => state.projects.projects);
+
+  useEffect(() => {
+    // join rooms in socket with projects
+    projects.map(project => joinProject(project));
+  }, [projects]);
+
+  useEffect(() => {
+    // listen to changes in projects rooms
+    test();
+  }, []);
 
   return (
     <MainDashboard>

@@ -26,6 +26,25 @@ const ChatNav = ({ channel, setPanelOpen, setDrawerOpen, drawerOpen }) => {
     dispatch(addStarred(channel.id));
   };
 
+  const Description = () => {
+    if (channel.description) {
+      return (
+        <Tooltip
+          title={channel.description}
+          interactive
+          aria-label={channel.description}
+        >
+          <ChannelDescription>{channel.description}</ChannelDescription>
+        </Tooltip>
+      );
+    }
+    return (
+      <Tooltip title="Add a topic" interactive aria-label="Add a topic">
+        <ChannelDescription>Add a topic</ChannelDescription>
+      </Tooltip>
+    );
+  };
+
   return (
     <Nav>
       <NavPaper>
@@ -39,7 +58,7 @@ const ChatNav = ({ channel, setPanelOpen, setDrawerOpen, drawerOpen }) => {
             </Box>
           </Tooltip>
 
-          <Tooltip title="Important Messages" aria-label="important messages">
+          <Tooltip title="Important Messages" aria-label="pinned messages">
             <Box
               component="span"
               onClick={() => {
@@ -63,15 +82,7 @@ const ChatNav = ({ channel, setPanelOpen, setDrawerOpen, drawerOpen }) => {
             </Box>
           </Tooltip>
 
-          {channel.description && (
-            <Tooltip
-              title={channel.description}
-              interactive
-              aria-label={channel.description}
-            >
-              <ChannelDescription>{channel.description}</ChannelDescription>
-            </Tooltip>
-          )}
+          <Description />
         </NavList>
       </NavPaper>
     </Nav>

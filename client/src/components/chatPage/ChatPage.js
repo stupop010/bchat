@@ -12,7 +12,7 @@ const ChatPage = ({ user }) => {
   // Fetching the channel Details
   const channel = useChannelFetching(id);
   if (isEmpty(channel)) return null;
-  console.log(channel);
+
   // const isAdmin = channel.users[0].channel_members.isAdmin;
   return <ChatDisplay channel={channel} user={user} />;
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
@@ -18,7 +19,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Messages = ({ message, userId }) => {
-  console.log(message);
   const classes = useStyles();
   const [otherUser, setOtherUser] = useState(false);
 
@@ -31,12 +31,14 @@ const Messages = ({ message, userId }) => {
 
   return (
     <MessageCard key={message.id} className={otherUser ? classes.right : null}>
-      <MessageContent>
-        <MessageTitle color="textSecondary">
-          {message.userName} <span>{date}</span>
-        </MessageTitle>
-        <Message component="div">{msg}</Message>
-      </MessageContent>
+      <Tooltip title="Add" aria-label="add">
+        <MessageContent>
+          <MessageTitle color="textSecondary">
+            {message.userName} <span>{date}</span>
+          </MessageTitle>
+          <Message component="div">{msg}</Message>
+        </MessageContent>
+      </Tooltip>
     </MessageCard>
   );
 };

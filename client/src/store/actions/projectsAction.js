@@ -9,6 +9,7 @@ import {
   EDIT_CHANNEL,
   DELETE_CHANNEL,
 } from '../actionTypes';
+import { fetchProjectData } from '../../utils/socket';
 
 // Project Actions
 export const createProject = data => async dispatch => {
@@ -41,8 +42,11 @@ export const addUserToProject = (email, projectId) => async dispatch => {
 
 // Channel Actions
 export const createChannel = data => async dispatch => {
+  const { projectId, userId } = data;
   try {
     const res = await axios.post('/api/channel', data);
+    console.log(data);
+    fetchProjectData(projectId, userId);
     dispatch({ type: CREATE_CHANNEL, payload: res.data });
   } catch (err) {
     console.error(err);
