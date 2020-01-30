@@ -18,6 +18,7 @@ const ChannelDetails = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const channel = useSelector(state => state.channel.channel);
+  const { projectId } = channel;
   const isAdmin = useSelector(state => state.channel.isAdmin);
   const dispatch = useDispatch();
 
@@ -72,7 +73,7 @@ const ChannelDetails = () => {
             variant="contained"
             className={classes.deleteButton}
             startIcon={<DeleteIcon />}
-            onClick={() => dispatch(deleteChannel(channel.id))}
+            onClick={() => dispatch(deleteChannel(channel.id, projectId))}
           >
             Delete Channel
           </Button>

@@ -1,5 +1,9 @@
 import io from 'socket.io-client';
-import { CREATE_MESSAGE, ONLINE_IN_CHANNEL } from '../store/actionTypes';
+import {
+  CREATE_MESSAGE,
+  // ONLINE_IN_CHANNEL,
+  SOCKET_FETCH_PROJECT,
+} from '../store/actionTypes';
 
 const ENDPOINT = 'http://localhost:5000';
 export const socket = io.connect(ENDPOINT, { reconnect: true });
@@ -15,9 +19,10 @@ export const fetchProjectData = projectId => {
   socket.emit('fetch_project_data', { projectId });
 };
 
-export const test = () => {
+export const onFetchProjectData = dispatch => {
   socket.on('send_project_data', data => {
     console.log(data);
+    dispatch({ type: SOCKET_FETCH_PROJECT, payload: data.projects });
   });
 };
 
@@ -29,7 +34,6 @@ export const joinChannel = channel => {
 
 export const newMessage = dispatch => {
   socket.on('newMessage', data => {
-    console.log(data);
     dispatch({ type: CREATE_MESSAGE, payload: data });
   });
 };
@@ -43,9 +47,9 @@ export const disconnectSocket = () => {
   socket.off();
 };
 
-export const onlineInChannel = dispatch => {
-  socket.on('onlineInChannel', data => {
-    console.log(data);
-    dispatch({ type: ONLINE_IN_CHANNEL, payload: data.online });
-  });
-};
+// export const onlineInChannel = dispatch => {
+//   socket.on('onlineInChannel', data => {
+//     console.log(data);
+//     dispatch({ type: ONLINE_IN_CHANNEL, payload: data.online });
+//   });
+// };

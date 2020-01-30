@@ -9,6 +9,7 @@ export const FETCH_USER = 'FETCH_USER';
 // Project
 export const CREATE_PROJECT = 'CREATE_PROJECT';
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
+export const SOCKET_FETCH_PROJECT = 'SOCKET_FETCH_PROJECT';
 
 // Channel
 export const CREATE_CHANNEL = 'CREATE_CHANNEL';

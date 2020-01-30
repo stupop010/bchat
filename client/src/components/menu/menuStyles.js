@@ -7,6 +7,7 @@ export const MenuAside = styled(Box)`
   width: 220px;
   background: rgb(110, 15, 7);
   height: 100%;
+  overflow: scroll;
 `;
 
 export const UserTitle = styled.h2`

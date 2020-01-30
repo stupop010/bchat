@@ -16,7 +16,7 @@ import {
   joinChannel,
   newMessage,
   sendSocketMessage,
-  onlineInChannel,
+  // onlineInChannel,
 } from '../../utils/socket';
 import MessageBox from '../messageBox/MessageBox';
 
@@ -35,7 +35,7 @@ const ChatDisplay = ({ channel, user, isAdmin }) => {
   useEffect(() => {
     // Socket Functions
     joinChannel(channel);
-    onlineInChannel(dispatch);
+    // onlineInChannel(dispatch);
   }, [channel.id]);
 
   const sendMessage = data => {

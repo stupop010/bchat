@@ -42,11 +42,10 @@ export const addUserToProject = (email, projectId) => async dispatch => {
 
 // Channel Actions
 export const createChannel = data => async dispatch => {
-  const { projectId, userId } = data;
+  const { projectId } = data;
   try {
     const res = await axios.post('/api/channel', data);
-    console.log(data);
-    fetchProjectData(projectId, userId);
+    fetchProjectData(projectId);
     dispatch({ type: CREATE_CHANNEL, payload: res.data });
   } catch (err) {
     console.error(err);
@@ -71,9 +70,13 @@ export const editChannel = data => async dispatch => {
   }
 };
 
-export const deleteChannel = data => async dispatch => {
+export const deleteChannel = (channelId, projectId) => async dispatch => {
+  console.log(projectId, 'project id');
   try {
-    const res = await axios.delete('/api/channel', { params: { data } });
+    const res = await axios.delete('/api/channel', {
+      params: { data: channelId },
+    });
+    fetchProjectData(projectId);
     dispatch({ type: DELETE_CHANNEL, payload: res.data });
   } catch (err) {
     console.error(err);

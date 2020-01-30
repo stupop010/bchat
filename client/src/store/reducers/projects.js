@@ -4,6 +4,7 @@ import {
   CREATE_CHANNEL,
   ONLINE_IN_CHANNEL,
   DELETE_CHANNEL,
+  SOCKET_FETCH_PROJECT,
 } from '../actionTypes';
 
 const initialState = {
@@ -20,10 +21,21 @@ export default function(state = initialState, { type, payload }) {
       };
     case FETCH_PROJECTS:
     case CREATE_CHANNEL:
-    case DELETE_CHANNEL:
       return {
         ...state,
         projects: payload,
+      };
+    case DELETE_CHANNEL:
+    case SOCKET_FETCH_PROJECT:
+      console.log('im called', payload);
+      return {
+        ...state,
+        projects: state.projects.map(project => {
+          if (project.id === payload.id) {
+            return { ...payload, project_members: project.project_members };
+          }
+          return project;
+        }),
       };
     // case FETCH_CHANNEL:
     //   return {
