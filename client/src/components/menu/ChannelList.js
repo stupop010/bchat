@@ -10,7 +10,7 @@ const ChannelList = ({ channel, projectName }) => {
   return (
     <ChannelListItem button>
       <ListItemText>
-        <Link to={`${url}/${projectName}/${channel.name}/${channel.id}`}>
+        <Link to={`${url}/${projectName}/${channel.name}/${channel.uuid}`}>
           # {channel.name}
         </Link>
       </ListItemText>
@@ -25,6 +25,7 @@ ChannelList.propTypes = {
     description: PropTypes.string,
     project_id: PropTypes.number,
     id: PropTypes.number,
+    uuid: PropTypes.string,
   }).isRequired,
   projectName: PropTypes.string.isRequired,
 };
