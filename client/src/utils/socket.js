@@ -38,8 +38,8 @@ export const newMessage = dispatch => {
   });
 };
 
-export const sendSocketMessage = (message, channelId, userId, userName) => {
-  socket.emit('message', { message, channelId, userId, userName });
+export const sendSocketMessage = (message, channelUUID, userId, userName) => {
+  socket.emit('message', { message, channelUUID, userId, userName });
 };
 
 export const disconnectSocket = () => {

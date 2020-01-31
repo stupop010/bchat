@@ -39,7 +39,7 @@ const ChatDisplay = ({ channel, user, isAdmin }) => {
   }, [channel.id]);
 
   const sendMessage = data => {
-    sendSocketMessage(data, channel.id, user.id, user.name);
+    sendSocketMessage(data, channel.uuid, user.id, user.name);
   };
 
   const scrollToBottom = () => {

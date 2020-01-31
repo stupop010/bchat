@@ -7,10 +7,10 @@ import useChannelFetching from '../../hooks/fetchingData';
 import ChatDisplay from './ChatDisplay';
 
 const ChatPage = ({ user }) => {
-  const { id } = useParams();
+  const { uuid } = useParams();
 
   // Fetching the channel Details
-  const channel = useChannelFetching(id);
+  const channel = useChannelFetching(uuid);
   if (isEmpty(channel)) return null;
 
   // const isAdmin = channel.users[0].channel_members.isAdmin;

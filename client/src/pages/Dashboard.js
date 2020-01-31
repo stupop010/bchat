@@ -33,7 +33,7 @@ const Dashboard = () => {
           <Route exact path={path}>
             <div>ck</div>
           </Route>
-          <Route path={`${path}/:projectName/:name/:id`}>
+          <Route path={`${path}/:projectName/:name/:uuid`}>
             <ChatPage user={user} />
           </Route>
         </Switch>
