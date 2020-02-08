@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+
+import Messagetooltip from './MessageTooltip';
+import EditMessage from './EditMessage';
 
 import {
   MessageContent,
@@ -21,24 +25,39 @@ const useStyles = makeStyles(() => ({
 const Messages = ({ message, userId }) => {
   const classes = useStyles();
   const [otherUser, setOtherUser] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     if (userId !== message.userId) setOtherUser(true);
   }, []);
+
+  const toggleEditMode = () => {
+    setEditMode(!editMode);
+  };
 
   const date = moment(message.createdAt).calendar();
   const msg = message.message.replace(/\u21B5/g, '<br/>');
 
   return (
     <MessageCard key={message.id} className={otherUser ? classes.right : null}>
-      <Tooltip title="Add" aria-label="add">
-        <MessageContent>
-          <MessageTitle color="textSecondary">
-            {message.userName} <span>{date}</span>
-          </MessageTitle>
-          <Message component="div">{msg}</Message>
-        </MessageContent>
-      </Tooltip>
+      <MessageContent>
+        <Tooltip
+          title={<Messagetooltip toggleEditMode={toggleEditMode} />}
+          interactive
+          placement="right-start"
+        >
+          <Box>
+            <MessageTitle color="textSecondary">
+              {message.userName} <span>{date}</span>
+            </MessageTitle>
+            {editMode ? (
+              <EditMessage />
+            ) : (
+              <Message component="div">{msg}</Message>
+            )}
+          </Box>
+        </Tooltip>
+      </MessageContent>
     </MessageCard>
   );
 };
@@ -53,4 +72,5 @@ Messages.propTypes = {
   }).isRequired,
   userId: PropTypes.number.isRequired,
 };
+
 export default Messages;
