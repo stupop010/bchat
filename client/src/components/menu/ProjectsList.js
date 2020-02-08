@@ -12,7 +12,6 @@ const ProjectsList = ({ projects }) => {
   const [modalAddUserState, setModalAddUserState] = useState(false);
   const [targetProject, setProject] = useState({});
   const userId = useSelector(state => state.user.id);
-  console.log(userId);
 
   const handleChannelClose = () => {
     setProject({});

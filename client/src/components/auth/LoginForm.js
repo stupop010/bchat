@@ -1,29 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import Proptypes from 'prop-types';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { SignForm, Form, TextInput } from './authStyle';
 import { signIn } from '../../store/actions/authActions';
 
-const LoginForm = ({ isAuth }) => {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const submit = e => {
     e.preventDefault();
     const data = { email, password };
-    dispatch(signIn(data));
+    dispatch(signIn(data, history));
   };
-
-  console.log(isAuth);
-
-  // if (isAuth) return <Redirect to="/dashboard" />;
-
-  useEffect(() => {
-    console.log('im chaned');
-  }, [isAuth]);
 
   return (
     <SignForm>
@@ -44,10 +37,6 @@ const LoginForm = ({ isAuth }) => {
       </Form>
     </SignForm>
   );
-};
-
-LoginForm.propTypes = {
-  isAuth: Proptypes.bool.isRequired,
 };
 
 export default LoginForm;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { Form, TextInput, SignForm } from './authStyle';
 import { registerUser } from '../../store/actions/authActions';
@@ -10,11 +11,12 @@ const RegisterForm = () => {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const submit = e => {
     e.preventDefault();
     const data = { name, email, password };
-    dispatch(registerUser(data));
+    dispatch(registerUser(data, history));
   };
 
   const onNameChange = ({ target }) => {

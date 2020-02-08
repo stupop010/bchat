@@ -52,9 +52,9 @@ export const createChannel = data => async dispatch => {
   }
 };
 
-export const fetchChannel = id => async dispatch => {
+export const fetchChannel = uuid => async dispatch => {
   try {
-    const res = await axios.get('/api/channel', { params: { id } });
+    const res = await axios.get('/api/channel', { params: { uuid } });
     dispatch({ type: FETCH_CHANNEL, payload: res.data });
   } catch (err) {
     console.error(err);

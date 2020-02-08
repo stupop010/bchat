@@ -3,12 +3,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchChannel } from '../store/actions/projectsAction';
 
-const useChannelFetching = id => {
+const useChannelFetching = uuid => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchChannel(id));
-  }, [id]);
+    dispatch(fetchChannel(uuid));
+  }, [uuid]);
 
   const channel = useSelector(state => state.channel.channel);
   return channel;

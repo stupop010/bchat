@@ -49,7 +49,6 @@ Messages.propTypes = {
     id: PropTypes.number.isRequired,
     message: PropTypes.string.isRequired,
     userId: PropTypes.number.isRequired,
-    channelId: PropTypes.number.isRequired,
     createdAt: PropTypes.string.isRequired,
   }).isRequired,
   userId: PropTypes.number.isRequired,
