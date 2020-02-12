@@ -1,6 +1,6 @@
 /* eslint-disable */
 import axios from 'axios';
-import { SIGN_IN, REGISTER_USER } from '../actionTypes';
+import { SIGN_IN, REGISTER_USER, LOGOUT } from '../actionTypes';
 
 export const registerUser = (data, history) => async dispatch => {
   try {
@@ -22,8 +22,9 @@ export const signIn = (data, history) => async dispatch => {
   }
 };
 
-export const logOut = () => {
-  console.log('logout');
+export const logOut = history => dispatch => {
+  dispatch({ type: LOGOUT });
+  history.push('/');
 };
 
 /* eslint-enable */

@@ -1,6 +1,8 @@
 // Auth
-export const SIGN_IN = 'SI∂GN_IN';
+export const SIGN_IN = 'SIGN_IN';
 export const REGISTER_USER = 'REGISTER_USER';
+export const IS_AUTH = 'IS_AUTH';
+export const LOGOUT = 'LOGOUT';
 
 // User
 export const FETCH_USER = 'FETCH_USER';

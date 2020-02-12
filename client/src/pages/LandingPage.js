@@ -11,7 +11,7 @@ import useStyles from './landingPageStyle';
 
 const LandingPage = () => {
   const classes = useStyles();
-  const isAuth = useSelector(state => state.user.isAuth);
+  const isAuth = useSelector(state => state.auth.isAuth);
 
   return (
     <Box className={classes.root} component="main">

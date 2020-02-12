@@ -43,7 +43,11 @@ const Header = ({ isAuth }) => {
 };
 
 Header.propTypes = {
-  isAuth: PropTypes.bool.isRequired,
+  isAuth: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  isAuth: false,
 };
 
 export default Header;

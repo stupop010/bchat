@@ -1,6 +1,6 @@
 /* eslint-disable */
 import axios from 'axios';
-import { FETCH_USER, LOGIN_ERROR } from '../actionTypes';
+import { FETCH_USER, LOGIN_ERROR, IS_AUTH } from '../actionTypes';
 
 export const fetchUser = () => async dispatch => {
   const accessToken = JSON.parse(localStorage.getItem('token'));
@@ -11,6 +11,7 @@ export const fetchUser = () => async dispatch => {
     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
     const res = await axios.get('/api/auth');
     dispatch({ type: FETCH_USER, payload: res.data });
+    dispatch({ type: IS_AUTH });
   } catch (err) {
     dispatch({ type: LOGIN_ERROR });
   }
