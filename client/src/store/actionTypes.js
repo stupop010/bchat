@@ -1,7 +1,6 @@
 // Auth
 export const SIGN_IN = 'SI∂GN_IN';
 export const REGISTER_USER = 'REGISTER_USER';
-export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 
 // User
 export const FETCH_USER = 'FETCH_USER';
@@ -20,3 +19,6 @@ export const DELETE_CHANNEL = 'DELETE_CHANNEL';
 
 // Messages
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
+
+// Errors
+export const LOGIN_ERROR = 'LOGIN_ERROR';

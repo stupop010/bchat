@@ -42,6 +42,13 @@ export const sendSocketMessage = (message, channelUUID, userId, userName) => {
   socket.emit('message', { message, channelUUID, userId, userName });
 };
 
+export const editMessage = (message, messageId) => {
+  console.log(message, messageId);
+  socket.emit('edit_message', { message, messageId }, data => {
+    console.log(data);
+  });
+};
+
 export const disconnectSocket = () => {
   socket.emit('disconnect');
   socket.off();

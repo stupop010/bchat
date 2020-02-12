@@ -34,6 +34,7 @@ export const fetchProjects = () => async dispatch => {
 export const addUserToProject = (email, projectId) => async dispatch => {
   try {
     const res = await axios.post('/api/project/addUser', { email, projectId });
+    fetchProjectData(projectId);
     console.log(res);
   } catch (err) {
     console.error(err);
@@ -41,12 +42,11 @@ export const addUserToProject = (email, projectId) => async dispatch => {
 };
 
 // Channel Actions
-export const createChannel = data => async dispatch => {
+export const createChannel = async data => {
   const { projectId } = data;
   try {
-    const res = await axios.post('/api/channel', data);
+    await axios.post('/api/channel', data);
     fetchProjectData(projectId);
-    dispatch({ type: CREATE_CHANNEL, payload: res.data });
   } catch (err) {
     console.error(err);
   }
@@ -70,21 +70,25 @@ export const editChannel = data => async dispatch => {
   }
 };
 
-export const deleteChannel = (channelId, projectId) => async dispatch => {
-  console.log(projectId, 'project id');
+export const deleteChannel = async (channelId, projectId) => {
   try {
-    const res = await axios.delete('/api/channel', {
+    await axios.delete('/api/channel', {
       params: { data: channelId },
     });
     fetchProjectData(projectId);
-    dispatch({ type: DELETE_CHANNEL, payload: res.data });
   } catch (err) {
     console.error(err);
   }
 };
 
 // Message Actions
-
+export const editMessage = (message, messageId) => async dispatch => {
+  try {
+    // const res = await
+  } catch (err) {
+    console.log(err);
+  }
+};
 // Star Actions
 export const addStarred = id => async dispatch => {
   try {

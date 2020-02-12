@@ -1,10 +1,9 @@
-import { FETCH_USER, REFRESH_TOKEN } from '../actionTypes';
+import { FETCH_USER, LOGIN_ERROR } from '../actionTypes';
 
 const initialState = {
   displayName: '',
   email: '',
   name: '',
-  isLoading: false,
   isAuth: false,
 };
 
@@ -16,11 +15,14 @@ export default function(state = initialState, { type, payload }) {
         ...payload,
         isAuth: true,
       };
-    case REFRESH_TOKEN:
+    case LOGIN_ERROR: {
       return {
-        ...state,
-        ...payload.user,
+        displayName: '',
+        email: '',
+        name: '',
+        isAuth: false,
       };
+    }
     default:
       return state;
   }

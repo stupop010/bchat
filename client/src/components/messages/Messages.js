@@ -7,6 +7,7 @@ import Box from '@material-ui/core/Box';
 
 import Messagetooltip from './MessageTooltip';
 import EditMessage from './EditMessage';
+import { editMessage } from '../../utils/socket';
 
 import {
   MessageContent,
@@ -35,8 +36,24 @@ const Messages = ({ message, userId }) => {
     setEditMode(!editMode);
   };
 
+  const sendEditMessage = editMsg => {
+    editMessage(editMsg, message.id);
+  };
+
   const date = moment(message.createdAt).calendar();
   const msg = message.message.replace(/\u21B5/g, '<br/>');
+
+  const IfEditMode = () => {
+    if (editMode && !otherUser)
+      return (
+        <EditMessage
+          message={msg}
+          toggleEditMode={toggleEditMode}
+          sendEditMessage={sendEditMessage}
+        />
+      );
+    return <Message component="div">{msg}</Message>;
+  };
 
   return (
     <MessageCard key={message.id} className={otherUser ? classes.right : null}>
@@ -50,11 +67,7 @@ const Messages = ({ message, userId }) => {
             <MessageTitle color="textSecondary">
               {message.userName} <span>{date}</span>
             </MessageTitle>
-            {editMode ? (
-              <EditMessage />
-            ) : (
-              <Message component="div">{msg}</Message>
-            )}
+            <IfEditMode />
           </Box>
         </Tooltip>
       </MessageContent>

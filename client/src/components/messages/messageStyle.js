@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
@@ -28,3 +29,29 @@ export const Message = styled(Typography)`
   word-break: break-all;
   white-space: pre-wrap;
 `;
+
+export const useStyles = makeStyles(() => ({
+  editContainer: {
+    paddingTop: '0.5rem ',
+  },
+  editButtons: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    margin: '0.4rem',
+  },
+  primaryButton: {
+    backgroundColor: 'rgb(40, 143, 67)',
+    marginRight: '0.4rem',
+    '&:hover': {
+      background: 'rgb(25, 97, 44)',
+      color: 'white',
+    },
+  },
+  cancelButton: {
+    background: 'rgb(179, 30, 30)',
+    '&:hover': {
+      background: 'rgb(120, 18, 18)',
+      color: 'white',
+    },
+  },
+}));

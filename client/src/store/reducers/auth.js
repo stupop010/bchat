@@ -1,8 +1,7 @@
-import { SIGN_IN, REGISTER_USER, REFRESH_TOKEN } from '../actionTypes';
+import { SIGN_IN, REGISTER_USER, LOGIN_ERROR } from '../actionTypes';
 
 const initialState = {
   token: JSON.parse(localStorage.getItem('token')),
-  refreshToken: JSON.parse(localStorage.getItem('refreshToken')),
   isAuth: false,
 };
 
@@ -15,12 +14,12 @@ export default function(state = initialState, { type, payload }) {
         ...payload,
         isAuth: true,
       };
-    case REFRESH_TOKEN:
+    case LOGIN_ERROR:
       return {
-        ...state,
-        accessToken: payload.accessToken,
-        isAuth: true,
+        token: null,
+        isAuth: false,
       };
+
     default:
       return state;
   }

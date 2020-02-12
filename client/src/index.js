@@ -26,7 +26,6 @@ store.subscribe(
   throttle(() => {
     saveState({
       token: store.getState().auth.token,
-      refreshToken: store.getState().auth.refreshToken,
     });
   }, 1000),
 );

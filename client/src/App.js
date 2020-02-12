@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
+import PrivateRoute from './components/PrivateRoute';
 import RegisterForm from './components/auth/RegisterForm';
 import LoginForm from './components/auth/LoginForm';
 import Dashboard from './pages/Dashboard';
@@ -27,9 +29,9 @@ const App = () => {
         <Route exact path="/">
           <LandingPage />
         </Route>
-        <Route path="/dashboard">
+        <PrivateRoute path="/dashboard">
           <Dashboard />
-        </Route>
+        </PrivateRoute>
         <Route exact path="/login">
           <LoginForm />
         </Route>
