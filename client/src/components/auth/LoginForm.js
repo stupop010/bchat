@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { TextField } from '@material-ui/core';
 
-import { SignForm, Form, TextInput } from './authStyle';
+import useStyles from './authStyle';
+import Form from './Form';
 import { signIn } from '../../store/actions/authActions';
 
 const LoginForm = () => {
+  const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,24 +21,27 @@ const LoginForm = () => {
     dispatch(signIn(data, history));
   };
 
+  const cancelButton = () => {
+    history.push('/');
+  };
+
   return (
-    <SignForm>
-      <Form autoComplete="off" onSubmit={submit}>
-        <TextInput
-          type="email"
-          value={email}
-          label="Email"
-          onChange={e => setEmail(e.target.value)}
-        />
-        <TextInput
-          value={password}
-          label="Password"
-          type="password"
-          onChange={e => setPassword(e.target.value)}
-        />
-        <button type="submit">submit</button>
-      </Form>
-    </SignForm>
+    <Form submit={submit} cancelButton={cancelButton} title="login">
+      <TextField
+        className={classes.input}
+        type="email"
+        value={email}
+        label="Email"
+        onChange={e => setEmail(e.target.value)}
+      />
+      <TextField
+        className={classes.input}
+        value={password}
+        label="Password"
+        type="password"
+        onChange={e => setPassword(e.target.value)}
+      />
+    </Form>
   );
 };
 
