@@ -7,6 +7,7 @@ import Menu from '../components/menu/Menu';
 
 import ChatPage from '../components/chatPage/ChatPage';
 import { joinProject, onFetchProjectData } from '../utils/socket';
+import { fetchUser } from '../store/actions/userActions';
 
 // eslint-disable-next-line react/prop-types
 const Dashboard = () => {
@@ -21,6 +22,7 @@ const Dashboard = () => {
   }, [projects]);
 
   useEffect(() => {
+    dispatch(fetchUser());
     // listen to changes in projects rooms
     onFetchProjectData(dispatch);
   }, []);

@@ -12,8 +12,8 @@ const useStyles = makeStyles(theme => ({
       fontWeight: 500,
       textTransform: 'capitalize',
     },
-    [theme.breakpoints.down('sm')]: {
-      width: '90%',
+    [theme.breakpoints.down('xs')]: {
+      width: '80%',
     },
   },
   input: {

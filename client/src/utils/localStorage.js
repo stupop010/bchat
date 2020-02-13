@@ -1,10 +1,17 @@
 export const loadState = () => {
   try {
     const accessToken = localStorage.getItem('token');
-    if (accessToken === null) return undefined;
+    if (accessToken === null)
+      return {
+        token: null,
+        isAuth: false,
+        error: '',
+      };
 
     return {
       token: JSON.parse(accessToken),
+      isAuth: false,
+      error: '',
     };
   } catch (err) {
     console.error(err);

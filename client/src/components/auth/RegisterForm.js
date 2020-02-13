@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 
@@ -12,6 +12,7 @@ const RegisterForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const error = useSelector(state => state.auth.error);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -39,7 +40,12 @@ const RegisterForm = () => {
   };
 
   return (
-    <Form submit={submit} cancelButton={cancelButton} title="register">
+    <Form
+      submit={submit}
+      cancelButton={cancelButton}
+      title="register"
+      error={error}
+    >
       <TextField
         className={classes.input}
         value={name}

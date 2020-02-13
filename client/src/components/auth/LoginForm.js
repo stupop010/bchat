@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { TextField } from '@material-ui/core';
 
@@ -14,6 +14,7 @@ const LoginForm = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+  const error = useSelector(state => state.auth.error);
 
   const submit = e => {
     e.preventDefault();
@@ -26,7 +27,12 @@ const LoginForm = () => {
   };
 
   return (
-    <Form submit={submit} cancelButton={cancelButton} title="login">
+    <Form
+      submit={submit}
+      cancelButton={cancelButton}
+      title="login"
+      error={error}
+    >
       <TextField
         className={classes.input}
         type="email"

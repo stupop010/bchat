@@ -23,4 +23,6 @@ export const DELETE_CHANNEL = 'DELETE_CHANNEL';
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
 
 // Errors
+export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
+export const REGISTER_ERROR = 'REGISTER_ERROR';

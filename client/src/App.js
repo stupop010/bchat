@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import PrivateRoute from './components/PrivateRoute';
 import RegisterForm from './components/auth/RegisterForm';
@@ -15,8 +15,6 @@ import { disconnectSocket } from './utils/socket';
 
 const App = () => {
   const dispatch = useDispatch();
-  const isAuth = useSelector(state => state.user.isAuth);
-
   useEffect(() => {
     dispatch(fetchUser());
 
@@ -24,7 +22,7 @@ const App = () => {
       console.log('disconnet socket');
       disconnectSocket();
     };
-  }, [isAuth]);
+  }, []);
 
   return (
     <Router>

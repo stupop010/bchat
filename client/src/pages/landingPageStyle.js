@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
   heroContent: {
     display: 'grid',
     gridTemplateColumns: 'repeat(2,1fr)',
+    columnGap: '2rem',
     padding: '2rem',
     [theme.breakpoints.down('sm')]: {
       gridTemplateColumns: '1fr',

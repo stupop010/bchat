@@ -1,4 +1,4 @@
-import { FETCH_USER, LOGIN_ERROR } from '../actionTypes';
+import { FETCH_USER, AUTH_ERROR } from '../actionTypes';
 
 const initialState = {
   displayName: '',
@@ -15,7 +15,7 @@ export default function(state = initialState, { type, payload }) {
         ...payload,
         isAuth: true,
       };
-    case LOGIN_ERROR: {
+    case AUTH_ERROR: {
       return {
         displayName: '',
         email: '',
