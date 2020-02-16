@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
 
 import Messagetooltip from './MessageTooltip';
 import EditMessage from './EditMessage';
-import { editMessage } from '../../utils/socket';
+import { editMessage } from '../../store/actions/projectsAction';
 
 import {
   MessageContent,
@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Messages = ({ message, userId }) => {
+const Messages = ({ message, userId, channelId, channelUUID }) => {
   const classes = useStyles();
   const [otherUser, setOtherUser] = useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -37,7 +37,7 @@ const Messages = ({ message, userId }) => {
   };
 
   const sendEditMessage = editMsg => {
-    editMessage(editMsg, message.id);
+    editMessage(editMsg, message.id, channelId, channelUUID);
   };
 
   const date = moment(message.createdAt).calendar();
@@ -84,6 +84,8 @@ Messages.propTypes = {
     createdAt: PropTypes.string.isRequired,
   }).isRequired,
   userId: PropTypes.number.isRequired,
+  channelId: PropTypes.number.isRequired,
+  channelUUID: PropTypes.string.isRequired,
 };
 
 export default Messages;

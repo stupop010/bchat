@@ -7,7 +7,6 @@ import {
 
 const ENDPOINT = 'http://localhost:5000';
 export const socket = io.connect(ENDPOINT, { reconnect: true });
-export const isOpen = ws => console.log(ws);
 
 export const joinProject = project => {
   socket.emit('join_project', { project }, data => {
@@ -38,14 +37,26 @@ export const newMessage = dispatch => {
   });
 };
 
-export const sendSocketMessage = (message, channelUUID, userId, userName) => {
-  socket.emit('message', { message, channelUUID, userId, userName });
+export const sendSocketMessage = (
+  message,
+  channelUUID,
+  userId,
+  userName,
+  channelId,
+) => {
+  socket.emit('message', { message, channelUUID, userId, userName, channelId });
 };
 
-export const editMessage = (message, messageId) => {
-  console.log(message, messageId);
-  socket.emit('edit_message', { message, messageId }, data => {
+export const fetchMessages = (channelId, channelUUID) => {
+  socket.emit('fetch_messages', { channelId, channelUUID }, data => {
     console.log(data);
+  });
+};
+
+export const fetchedMessages = () => {
+  socket.on('fetched_messages', data => {
+    console.log(data);
+    console.log('hello');
   });
 };
 

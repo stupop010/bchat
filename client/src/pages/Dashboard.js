@@ -6,7 +6,11 @@ import styled from 'styled-components';
 import Menu from '../components/menu/Menu';
 
 import ChatPage from '../components/chatPage/ChatPage';
-import { joinProject, onFetchProjectData } from '../utils/socket';
+import {
+  joinProject,
+  onFetchProjectData,
+  fetchedMessages,
+} from '../utils/socket';
 import { fetchUser } from '../store/actions/userActions';
 
 // eslint-disable-next-line react/prop-types
@@ -25,6 +29,7 @@ const Dashboard = () => {
     dispatch(fetchUser());
     // listen to changes in projects rooms
     onFetchProjectData(dispatch);
+    fetchedMessages();
   }, []);
 
   return (

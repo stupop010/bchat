@@ -39,7 +39,7 @@ const ChatDisplay = ({ channel, user, isAdmin }) => {
   }, [channel.id]);
 
   const sendMessage = data => {
-    sendSocketMessage(data, channel.uuid, user.id, user.name);
+    sendSocketMessage(data, channel.uuid, user.id, user.name, channel.id);
   };
 
   const scrollToBottom = () => {
@@ -69,7 +69,13 @@ const ChatDisplay = ({ channel, user, isAdmin }) => {
       <MessagesContainer>
         <MessageList>
           {messages.map(message => (
-            <Messages message={message} userId={user.id} key={message.id} />
+            <Messages
+              message={message}
+              userId={user.id}
+              key={message.id}
+              channelId={channel.id}
+              channelUUID={channel.uuid}
+            />
           ))}
           <div ref={messagesEndRef} />
         </MessageList>

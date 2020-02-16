@@ -9,7 +9,7 @@ import {
   EDIT_CHANNEL,
   DELETE_CHANNEL,
 } from '../actionTypes';
-import { fetchProjectData } from '../../utils/socket';
+import { fetchProjectData, fetchMessages } from '../../utils/socket';
 
 // Project Actions
 export const createProject = data => async dispatch => {
@@ -82,13 +82,24 @@ export const deleteChannel = async (channelId, projectId) => {
 };
 
 // Message Actions
-export const editMessage = (message, messageId) => async dispatch => {
+export const editMessage = async (
+  message,
+  messageId,
+  channelId,
+  channelUUID,
+) => {
+  const data = {
+    message,
+    messageId,
+  };
   try {
-    // const res = await
+    await axios.patch('/api/message', data);
+    fetchMessages(channelId, channelUUID);
   } catch (err) {
     console.log(err);
   }
 };
+
 // Star Actions
 export const addStarred = id => async dispatch => {
   try {
