@@ -1,4 +1,4 @@
-import { FETCH_CHANNEL, CREATE_MESSAGE } from '../actionTypes';
+import { FETCH_CHANNEL, CREATE_MESSAGE, FETCH_MESSAGES } from '../actionTypes';
 
 const initialState = {
   channel: {},
@@ -19,6 +19,11 @@ export default function(state = initialState, { type, payload }) {
       return {
         ...state,
         messages: [...state.messages, payload.message],
+      };
+    case FETCH_MESSAGES:
+      return {
+        ...state,
+        messages: payload.messages,
       };
     default:
       return state;

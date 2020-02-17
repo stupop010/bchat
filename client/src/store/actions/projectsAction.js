@@ -100,11 +100,19 @@ export const editMessage = async (
   }
 };
 
-// Star Actions
-export const addStarred = id => async dispatch => {
+// Pinned Messages actions
+export const createPinnedMessage = async (
+  messageId,
+  channelId,
+  channelUUID,
+) => {
   try {
-    console.log(id);
-    const res = await axios.post('/api/channel/starred', { id });
+    const data = {
+      messageId,
+      channelId,
+    };
+    const res = await axios.post('/api/message/pinned', { data });
+    console.log(res);
   } catch (err) {
     console.error(err);
   }

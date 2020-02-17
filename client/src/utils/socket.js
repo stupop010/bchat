@@ -3,6 +3,7 @@ import {
   CREATE_MESSAGE,
   // ONLINE_IN_CHANNEL,
   SOCKET_FETCH_PROJECT,
+  FETCH_MESSAGES,
 } from '../store/actionTypes';
 
 const ENDPOINT = 'http://localhost:5000';
@@ -20,7 +21,6 @@ export const fetchProjectData = projectId => {
 
 export const onFetchProjectData = dispatch => {
   socket.on('send_project_data', data => {
-    console.log(data);
     dispatch({ type: SOCKET_FETCH_PROJECT, payload: data.projects });
   });
 };
@@ -53,8 +53,9 @@ export const fetchMessages = (channelId, channelUUID) => {
   });
 };
 
-export const fetchedMessages = () => {
+export const fetchedMessages = dispatch => {
   socket.on('fetched_messages', data => {
+    dispatch({ type: FETCH_MESSAGES, payload: data });
     console.log(data);
     console.log('hello');
   });

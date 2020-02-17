@@ -17,6 +17,7 @@ const EditMessage = ({ message, toggleEditMode, sendEditMessage }) => {
   const onSubmit = e => {
     e.preventDefault();
     sendEditMessage(editMessage);
+    toggleEditMode();
   };
 
   return (

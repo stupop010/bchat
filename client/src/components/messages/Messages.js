@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import Tooltip from '@material-ui/core/Tooltip';
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
+import { Box, Tooltip, Typography, CardContent } from '@material-ui/core';
 
 import Messagetooltip from './MessageTooltip';
 import EditMessage from './EditMessage';
-import { editMessage } from '../../store/actions/projectsAction';
-
 import {
-  MessageContent,
-  MessageCard,
-  MessageTitle,
-  Message,
-} from './messageStyle';
+  editMessage,
+  createPinnedMessage,
+} from '../../store/actions/projectsAction';
 
-const useStyles = makeStyles(() => ({
-  right: {
-    alignSelf: 'flex-end',
-    direction: 'rtl',
-  },
-}));
+import { MessageCard, MessageTitle, useStyles } from './messageStyle';
 
 const Messages = ({ message, userId, channelId, channelUUID }) => {
   const classes = useStyles();
@@ -40,6 +29,10 @@ const Messages = ({ message, userId, channelId, channelUUID }) => {
     editMessage(editMsg, message.id, channelId, channelUUID);
   };
 
+  const pinMessage = () => {
+    createPinnedMessage(message.id, channelId, channelUUID);
+  };
+
   const date = moment(message.createdAt).calendar();
   const msg = message.message.replace(/\u21B5/g, '<br/>');
 
@@ -52,14 +45,32 @@ const Messages = ({ message, userId, channelId, channelUUID }) => {
           sendEditMessage={sendEditMessage}
         />
       );
-    return <Message component="div">{msg}</Message>;
+    return <Box className={classes.message}>{msg}</Box>;
+  };
+
+  const IfEdited = () => {
+    if (message.createdAt !== message.updatedAt) {
+      return (
+        <Box className={classes.updatedAt}>
+          <Typography>
+            Updated last {moment(message.updatedAt).calendar()}
+          </Typography>
+        </Box>
+      );
+    }
+    return null;
   };
 
   return (
     <MessageCard key={message.id} className={otherUser ? classes.right : null}>
-      <MessageContent>
+      <CardContent className={classes.content}>
         <Tooltip
-          title={<Messagetooltip toggleEditMode={toggleEditMode} />}
+          title={
+            <Messagetooltip
+              toggleEditMode={toggleEditMode}
+              pinMessage={pinMessage}
+            />
+          }
           interactive
           placement="right-start"
         >
@@ -68,9 +79,10 @@ const Messages = ({ message, userId, channelId, channelUUID }) => {
               {message.userName} <span>{date}</span>
             </MessageTitle>
             <IfEditMode />
+            <IfEdited />
           </Box>
         </Tooltip>
-      </MessageContent>
+      </CardContent>
     </MessageCard>
   );
 };
@@ -82,6 +94,7 @@ Messages.propTypes = {
     message: PropTypes.string.isRequired,
     userId: PropTypes.number.isRequired,
     createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
   }).isRequired,
   userId: PropTypes.number.isRequired,
   channelId: PropTypes.number.isRequired,

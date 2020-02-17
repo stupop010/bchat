@@ -29,7 +29,7 @@ const Dashboard = () => {
     dispatch(fetchUser());
     // listen to changes in projects rooms
     onFetchProjectData(dispatch);
-    fetchedMessages();
+    fetchedMessages(dispatch);
   }, []);
 
   return (
