@@ -90,7 +90,7 @@ export const useStyles = makeStyles(() => ({
     'messageBox messageBox messageBox drawer'`,
   },
   drawer: {
-    width: '20rem',
+    width: '27rem',
     gridArea: 'drawer',
     display: 'block !important',
     border: '1px solid rgba(209, 209, 209, 0.7)',
