@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Box, Tooltip, Typography, CardContent } from '@material-ui/core';
+import { Box, Tooltip, Typography } from '@material-ui/core';
 
 import Messagetooltip from './MessageTooltip';
 import EditMessage from './EditMessage';
@@ -63,7 +63,7 @@ const Messages = ({ message, userId, channelId, channelUUID }) => {
 
   return (
     <MessageCard key={message.id} className={otherUser ? classes.right : null}>
-      <CardContent className={classes.content}>
+      <Box className={classes.content}>
         <Tooltip
           title={
             <Messagetooltip
@@ -82,7 +82,7 @@ const Messages = ({ message, userId, channelId, channelUUID }) => {
             <IfEdited />
           </Box>
         </Tooltip>
-      </CardContent>
+      </Box>
     </MessageCard>
   );
 };

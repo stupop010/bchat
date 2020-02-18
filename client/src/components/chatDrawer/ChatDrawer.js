@@ -12,6 +12,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import useStyles from './chatDrawerStyle';
 import TitleButton from './TitleButton';
 import ChannelDetails from './ChannelDetails';
+import PinnedMessages from './PinnedMessages';
 
 const ChatDrawer = ({ panelOpen, setDrawerOpen }) => {
   const classes = useStyles();
@@ -54,11 +55,7 @@ const ChatDrawer = ({ panelOpen, setDrawerOpen }) => {
           <Typography className={classes.heading}>Pinned Items</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
-            Donec placerat, lectus sed mattis semper, neque lectus feugiat
-            lectus, varius pulvinar diam eros in elit. Pellentesque convallis
-            laoreet laoreet.
-          </Typography>
+          <PinnedMessages />
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel

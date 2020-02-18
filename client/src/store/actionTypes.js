@@ -22,6 +22,7 @@ export const DELETE_CHANNEL = 'DELETE_CHANNEL';
 // Messages
 export const CREATE_MESSAGE = 'CREATE_MESSAGE';
 export const FETCH_MESSAGES = 'FETCH_MESSAGES';
+export const FETCH_PINNED_MESSAGES = 'FETCH_PINNED_MESSAGES';
 
 // Errors
 export const AUTH_ERROR = 'AUTH_ERROR';

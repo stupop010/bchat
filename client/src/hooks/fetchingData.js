@@ -1,9 +1,9 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable import/prefer-default-export */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchChannel } from '../store/actions/projectsAction';
 
-const useChannelFetching = uuid => {
+export const useChannelFetching = uuid => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,5 +13,3 @@ const useChannelFetching = uuid => {
   const channel = useSelector(state => state.channel.channel);
   return channel;
 };
-
-export default useChannelFetching;

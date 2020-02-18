@@ -1,15 +1,16 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import RoomIcon from '@material-ui/icons/Room';
 import Typography from '@material-ui/core/Typography';
-import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
+// import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
 import Tooltip from '@material-ui/core/Tooltip';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import { addStarred } from '../../store/actions/projectsAction';
+import { createPinnedMessage } from '../../store/actions/projectsAction';
 import {
   Nav,
   NavPaper,
@@ -20,10 +21,10 @@ import {
 
 const ChatNav = ({ channel, setPanelOpen, setDrawerOpen, drawerOpen }) => {
   const { projectName } = useParams();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const click = () => {
-    dispatch(addStarred(channel.id));
+    createPinnedMessage(channel.id);
   };
 
   const Description = () => {
@@ -58,7 +59,7 @@ const ChatNav = ({ channel, setPanelOpen, setDrawerOpen, drawerOpen }) => {
             </Box>
           </Tooltip>
 
-          <Tooltip title="Important Messages" aria-label="pinned messages">
+          <Tooltip title="Pinned Messages" aria-label="pinned messages">
             <Box
               component="span"
               onClick={() => {
@@ -66,7 +67,7 @@ const ChatNav = ({ channel, setPanelOpen, setDrawerOpen, drawerOpen }) => {
                 setDrawerOpen(!drawerOpen);
               }}
             >
-              <PriorityHighIcon />
+              <RoomIcon />
             </Box>
           </Tooltip>
 

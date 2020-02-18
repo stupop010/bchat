@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 import io from 'socket.io-client';
 import {
   CREATE_MESSAGE,
@@ -59,6 +61,10 @@ export const fetchedMessages = dispatch => {
     console.log(data);
     console.log('hello');
   });
+};
+
+export const socketFetchPinnedMessages = (channelId, channelUUID, dispatch) => {
+  console.log('hello');
 };
 
 export const disconnectSocket = () => {

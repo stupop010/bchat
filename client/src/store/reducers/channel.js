@@ -1,9 +1,15 @@
-import { FETCH_CHANNEL, CREATE_MESSAGE, FETCH_MESSAGES } from '../actionTypes';
+import {
+  FETCH_CHANNEL,
+  CREATE_MESSAGE,
+  FETCH_MESSAGES,
+  FETCH_PINNED_MESSAGES,
+} from '../actionTypes';
 
 const initialState = {
   channel: {},
   isAdmin: false,
   messages: [],
+  pinnedMessages: [],
 };
 
 export default function(state = initialState, { type, payload }) {
@@ -24,6 +30,11 @@ export default function(state = initialState, { type, payload }) {
       return {
         ...state,
         messages: payload.messages,
+      };
+    case FETCH_PINNED_MESSAGES:
+      return {
+        ...state,
+        pinnedMessages: payload.messages,
       };
     default:
       return state;

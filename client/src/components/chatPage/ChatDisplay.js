@@ -11,6 +11,7 @@ import {
 import ChatNav from './ChatNav';
 import Messages from '../messages/Messages';
 import ChatDrawer from '../chatDrawer/ChatDrawer';
+import { fetchPinnedMessage } from '../../store/actions/projectsAction';
 
 import {
   joinChannel,
@@ -35,6 +36,7 @@ const ChatDisplay = ({ channel, user, isAdmin }) => {
   useEffect(() => {
     // Socket Functions
     joinChannel(channel);
+    dispatch(fetchPinnedMessage(channel.id));
     // onlineInChannel(dispatch);
   }, [channel.id]);
 

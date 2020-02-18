@@ -8,8 +8,13 @@ import {
   FETCH_CHANNEL,
   EDIT_CHANNEL,
   DELETE_CHANNEL,
+  FETCH_PINNED_MESSAGES,
 } from '../actionTypes';
-import { fetchProjectData, fetchMessages } from '../../utils/socket';
+import {
+  fetchProjectData,
+  fetchMessages,
+  socketFetchPinnedMessages,
+} from '../../utils/socket';
 
 // Project Actions
 export const createProject = data => async dispatch => {
@@ -111,8 +116,19 @@ export const createPinnedMessage = async (
       messageId,
       channelId,
     };
-    const res = await axios.post('/api/message/pinned', { data });
-    console.log(res);
+    await axios.post('/api/message/pinned', { data });
+    socketFetchPinnedMessages(channelId, channelUUID, dispatch);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const fetchPinnedMessage = channelId => async dispatch => {
+  try {
+    const res = await axios.get('/api/message/pinned', {
+      params: { channelId },
+    });
+    dispatch({ type: FETCH_PINNED_MESSAGES, payload: res.data });
   } catch (err) {
     console.error(err);
   }
